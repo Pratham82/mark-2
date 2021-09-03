@@ -56,15 +56,15 @@ const nextQuestion = () =>
 const results = () =>
   score === 50
     ? console.log(
-        chalk.bgGreen.black(
-          `\n Final Score: ${score}\nCongrats ${username} 🎉 you hit the high score \nLooks like you know me very well 😆 `
-        )
+      chalk.bgGreen.black(
+        `\n Final Score: ${score}\nCongrats ${username} 🎉 you hit the high score \nLooks like you know STAR WARS very well 😆 `
       )
+    )
     : console.log(
-        chalk.bgBlue.black(
-          `\n Final Score: ${score}\nThanks for playing ${username}.😃 `
-        )
+      chalk.bgBlue.black(
+        `\n Final Score: ${score}\nThanks for playing ${username}.😃 `
       )
+    )
 
 // Questions loop
 for (let i = 0; i < quizData.length; i++) {
