@@ -69,7 +69,7 @@ const results = () =>
 // Questions loop
 for (let i = 0; i < quizData.length; i++) {
   let answer = readlineSync.question(
-    chalk.blue(quizData[i].question, quizData[i].answers)
+    chalk.blue(quizData[i].question,'\nEnter the correct option no. from 1 to 4:', quizData[i].answers)
   )
   if (answer == answers[i]) {
     correctAnswer()
