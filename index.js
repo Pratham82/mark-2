@@ -47,8 +47,11 @@ const correctAnswer = () => {
   )
 }
 
-const wrongAnswer = () =>
-  console.log(chalk.red(`\nWrong answer 😢\nYour current score is ${score}`))
+const wrongAnswer = (correctOption) =>
+  console.log(
+    chalk.red(`\nWrong answer 😢\nYour current score is ${score}`),
+    chalk.green(`The correct option is ${correctOption}`)
+  )
 
 const nextQuestion = () =>
   console.log(chalk.yellow('\nLets proceed with next Question!!!'))
@@ -56,25 +59,29 @@ const nextQuestion = () =>
 const results = () =>
   score === 50
     ? console.log(
-      chalk.bgGreen.black(
-        `\n Final Score: ${score}\nCongrats ${username} 🎉 you hit the high score \nLooks like you know STAR WARS very well 😆 `
+        chalk.bgGreen.black(
+          `\n Final Score: ${score}\nCongrats ${username} 🎉 you hit the high score \nLooks like you know STAR WARS very well 😆 `
+        )
       )
-    )
     : console.log(
-      chalk.bgBlue.black(
-        `\n Final Score: ${score}\nThanks for playing ${username}.😃 `
+        chalk.bgBlue.black(
+          `\n Final Score: ${score}\nThanks for playing ${username}.😃 `
+        )
       )
-    )
 
 // Questions loop
 for (let i = 0; i < quizData.length; i++) {
   let answer = readlineSync.question(
-    chalk.blue(quizData[i].question, quizData[i].answers)
+    chalk.blue(
+      quizData[i].question,
+      '\nEnter the correct option no. from 1 to 4:',
+      quizData[i].answers
+    )
   )
   if (answer == answers[i]) {
     correctAnswer()
   } else {
-    wrongAnswer()
+    wrongAnswer(answers[i])
   }
   i < 9 ? nextQuestion() : results()
 }
